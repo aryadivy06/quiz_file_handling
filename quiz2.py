@@ -55,10 +55,38 @@ def attemp_quiz():
                     marks=marks+1
                     print("\n")
            
-            with open("marks.txt",'a') as a1:
-                   a1.write(f"{user_name},{marks}\n")
-
+           
             print("Want to do next quiz then choose option show above")
+        if user_name not in usid:
+         with open("marks.txt",'a') as a1:
+           a1.write(f"{user_name},{marks}\n") 
+        else:
+           di={}
+           m1=[]
+           n1=[]
+           with open("marks.txt",'r') as a1:
+                           data=a1.readlines()
+           f1=[]
+          
+           
+           for i in data:
+                       f1.append(i.replace("\n",""))
+           
+           for i in f1:
+               m,n=i.split(",")
+              
+               if m==user_name:
+                       m1.append(m)
+                       n1.append(marks)
+                       di[m]=marks
+               else:
+                       m1.append(m)
+                       n1.append(n)
+                       di[m]=n
+           with open("marks.txt","w") as b:
+                  for d in di:
+                          b.write(f"{d},{di[d]}\n")
+   
 
     else:
         print("\nFirst Login or Register\n")
@@ -91,7 +119,7 @@ def login():
     
      with open("id-pass.txt",'r') as idpas:
         d1=idpas.readlines()
-        print(d1)
+       
      
      
      
@@ -138,35 +166,11 @@ def login():
         # else:
         #     print("\nUser not exist go to registration")
         #     p=True
-
-
-        
 do=[]
 new=[]
 def profile():
     global marks
-    if user_name not in usid:
-         with open("marks.txt",'a') as a1:
-           a1.write(f"{user_name},{marks}\n") 
-    else:
-        with open("marks.txt",'r') as a1:
-                data=a1.readlines()
-        f1=[]
-        f3=[]
-        print(data)
-        for i in data:
-            f1.append(i.replace("\n",""))
-       
-        for i in f1:
-            f2=i.split(",")
-            f3.append(f2)
-        print(f2)
-        print(f3)
-        for j in f3:
-            if user_name in j:
-                print("Marks=",j[1])
     
-    print("huh")   
     if login_status==True:
         print("\nThe user information are:")
         with open("registration.txt","r") as reg:
