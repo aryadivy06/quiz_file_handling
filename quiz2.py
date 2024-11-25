@@ -75,7 +75,7 @@ def register():
         print("\nGoto login section this id already exist or give a new user name")
     else:
         pwd=input("Create your password:").lower()
-        enroll=input("enter your enrollment numbetr:").lower()
+        enroll=input("enter your enrollment number:").lower()
         with open("registration.txt","a") as reg:
             reg.write(f"{name},{enroll},{uid},{pwd}\n")
         
@@ -88,8 +88,10 @@ def login():
      global login_status
      global user_name
      p=False
+    
      with open("id-pass.txt",'r') as idpas:
         d1=idpas.readlines()
+        print(d1)
      
      
      
@@ -118,6 +120,7 @@ def login():
                     if uid_pwd[useid]==pw:
                       p=True
                       k=True
+                      login_status=True
                    
                     else :
                          pw=input("Enter Correct password:").lower()
@@ -126,11 +129,12 @@ def login():
                             p=True
                             k=True
                             login_status=True
+                            
     
             else:
                 print("\nUser not exist go to registration")
                 p=True
-            login_status=False
+            #login_status=False
         # else:
         #     print("\nUser not exist go to registration")
         #     p=True
@@ -141,9 +145,28 @@ do=[]
 new=[]
 def profile():
     global marks
-   
-    with open("marks.txt",'a') as a1:
-       a1.write(f"divya,{marks}\n") 
+    if user_name not in usid:
+         with open("marks.txt",'a') as a1:
+           a1.write(f"{user_name},{marks}\n") 
+    else:
+        with open("marks.txt",'r') as a1:
+                data=a1.readlines()
+        f1=[]
+        f3=[]
+        print(data)
+        for i in data:
+            f1.append(i.replace("\n",""))
+       
+        for i in f1:
+            f2=i.split(",")
+            f3.append(f2)
+        print(f2)
+        print(f3)
+        for j in f3:
+            if user_name in j:
+                print("Marks=",j[1])
+    
+    print("huh")   
     if login_status==True:
         print("\nThe user information are:")
         with open("registration.txt","r") as reg:
@@ -164,7 +187,7 @@ def profile():
         print("Name=",n)
         print("Enrollment Number=",en)
         print("User ID=",ud)
-        print("Marks:",marks)
+        
         print("Password=",p)
         with open("marks.txt",'r') as a1:
                 data=a1.readlines()
@@ -194,30 +217,48 @@ def main():
    
     l=False
     while l!=True:
-        print("\n---Welcome---")
-        print("1.Register")
-        print("2.Login")
-        print("3.Profile")
-        print("4.Attempt Quiz")
-        print("5.Exit")
-        choice=int(input("Enter your choice: "))
+        if login_status==True:
+            print("Choose form below\n")
+            print("3.Profile")
+            print("4.Attempt Quiz")
+            print("5.Exit")
+            choice=int(input("Enter your choice: "))
 
-        if choice==1:
-            register()
-        elif choice==2:
-            login()
-        elif choice==3:
-            profile()
-        elif choice==4:
-            attemp_quiz()
-
-
-        elif choice==5:
-            exit()
-            l=True
+            if choice==3:
+                profile()
+            elif choice==4:
+                attemp_quiz()
+            elif choice==5:
+                exit()
+                l=True
+            else:
+                print("Invalid choice")
+                l=False
         else:
-            print("Invalid choice")
-            l=False
+            print("\n---Welcome---")
+            print("1.Register")
+            print("2.Login")
+            print("3.Profile")
+            print("4.Attempt Quiz")
+            print("5.Exit")
+            choice=int(input("Enter your choice: "))
+    
+            if choice==1:
+                register()
+            elif choice==2:
+                login()
+            elif choice==3:
+                profile()
+            elif choice==4:
+                attemp_quiz()
+    
+    
+            elif choice==5:
+                exit()
+                l=True
+            else:
+                print("Invalid choice")
+                l=False
         
 
             
