@@ -11,7 +11,7 @@ def attemp_quiz():
         global marks
         n=False
         while n!=True:
-            print("Enter your Choice for quiz\n 1.DBMS\n 2.DSA\n 3.Python\n 0.Exit")
+            print("\nEnter your Choice for quiz\n 1.DBMS\n 2.DSA\n 3.Python\n 0.Exit")
             ch=int(input("Enter your choice for quiz:"))
             
             if ch==1:
@@ -24,6 +24,7 @@ def attemp_quiz():
                with open("python.txt",'r') as a1:
                    data=a1.readlines()
             elif ch==0:
+                print("\nMarks=",marks)
                 break
             else:
                 n=False
@@ -57,6 +58,7 @@ def attemp_quiz():
                    a1.write(f"{user_name},{marks}\n")
 
             print("Want to do next quiz then choose option show above")
+
     else:
         print("\nFirst Login or Register\n")
         
@@ -87,6 +89,7 @@ def login():
      p=False
      with open("id-pass.txt",'r') as idpas:
         d1=idpas.readlines()
+     
      for i in d1:
         u,p=i.split(",")
         p=p.replace("\n","")
@@ -96,8 +99,12 @@ def login():
      while p!=True:
        
         useid=input("Enter valid user id: ").lower()
-        if d1[0]!="":
+        if not d1:
+            print("\nUser not exist go to registration")
+            p=True
 
+        else:
+            
             k=False
             if useid in usid:
                  user_name=useid
@@ -119,9 +126,9 @@ def login():
             else:
                 p=False
             login_status=True
-        else:
-            print("\nUser not exist go to registration")
-            p=True
+        # else:
+        #     print("\nUser not exist go to registration")
+        #     p=True
 
 
         
@@ -129,11 +136,11 @@ do=[]
 new=[]
 def profile():
     global marks
-    print("Marks:",marks)
+   
     with open("marks.txt",'a') as a1:
        a1.write(f"divya,{marks}\n") 
     if login_status==True:
-        print("The user information are:")
+        print("\nThe user information are:")
         with open("registration.txt","r") as reg:
             data=reg.readlines()
         for i in data:
@@ -147,11 +154,12 @@ def profile():
                n=i[0]
                en=i[1]
                ud=i[2]
-               p="****"
-        
+               p=""
+       
         print("Name=",n)
         print("Enrollment Number=",en)
         print("User ID=",ud)
+        print("Marks:",marks)
         print("Password=",p)
         with open("marks.txt",'r') as a1:
                 data=a1.readlines()
