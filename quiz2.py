@@ -90,20 +90,22 @@ def login():
      with open("id-pass.txt",'r') as idpas:
         d1=idpas.readlines()
      
-     for i in d1:
-        u,p=i.split(",")
-        p=p.replace("\n","")
-        usid.append(u)
-        pa.append(p)
-        uid_pwd[u]=p
+     
+     
      while p!=True:
        
         useid=input("Enter valid user id: ").lower()
         if not d1:
             print("\nUser not exist go to registration")
             p=True
-
+        
         else:
+            for i in d1:
+                u,p=i.split(",")
+                p=p.replace("\n","")
+                usid.append(u)
+                pa.append(p)
+                uid_pwd[u]=p
             
             k=False
             if useid in usid:
