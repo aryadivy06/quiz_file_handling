@@ -2,6 +2,7 @@ login_status=False
 usid=[]
 pa=[]
 uid_pwd={}
+uid_marks={}
 user_name=""
 marks=0
 
@@ -124,11 +125,12 @@ def login():
                          if uid_pwd[useid]==pw:
                             p=True
                             k=True
-                        
+                            login_status=True
     
             else:
-                p=False
-            login_status=True
+                print("\nUser not exist go to registration")
+                p=True
+            login_status=False
         # else:
         #     print("\nUser not exist go to registration")
         #     p=True
@@ -157,7 +159,7 @@ def profile():
                n=i[0]
                en=i[1]
                ud=i[2]
-               p=""
+               p="****"
        
         print("Name=",n)
         print("Enrollment Number=",en)
