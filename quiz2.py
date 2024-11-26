@@ -8,6 +8,7 @@ marks=0
 
 # Attempt Quiz
 def attemp_quiz():
+    
     if login_status==True:
         global marks
         n=False
@@ -57,7 +58,9 @@ def attemp_quiz():
            
            
             print("Want to do next quiz then choose option show above")
+        
         if user_name not in usid:
+         print("true")
          with open("marks.txt",'a') as a1:
            a1.write(f"{user_name},{marks}\n") 
         else:
@@ -230,8 +233,14 @@ def main():
 
             if choice==3:
                 profile()
+                # print(usid)
+                # print(user_name)
+    
             elif choice==4:
                 attemp_quiz()
+                # print(usid)
+                # print(user_name)
+    
             elif choice==5:
                 exit()
                 l=True
@@ -253,9 +262,11 @@ def main():
                 login()
             elif choice==3:
                 profile()
+                
+
             elif choice==4:
                 attemp_quiz()
-    
+               
     
             elif choice==5:
                 exit()
@@ -264,6 +275,6 @@ def main():
                 print("Invalid choice")
                 l=False
         
-
+    
             
-main()
+main() 
