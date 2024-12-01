@@ -173,7 +173,7 @@ do=[]
 new=[]
 def profile():
     global marks
-    
+    p="****"
     if login_status==True:
         print("\nThe user information are:")
         with open("registration.txt","r") as reg:
@@ -189,7 +189,7 @@ def profile():
                n=i[0]
                en=i[1]
                ud=i[2]
-               p="****"
+               
        
         print("Name=",n)
         print("Enrollment Number=",en)
