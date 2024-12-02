@@ -13,7 +13,7 @@ for i in d1:
                 usid.append(u)
                 pa.append(p)
                 uid_pwd[u]=p
-
+print(uid_pwd)
 # Attempt Quiz
 def attemp_quiz():
     
@@ -66,9 +66,18 @@ def attemp_quiz():
            
            
             print("Want to do next quiz then choose option show above")
-        
-        if user_name not in usid:
-         print("true")
+        with open("marks.txt",'r') as idmark:
+             d2=idmark.readlines()
+        id=[]
+        mark=[]
+        for i in d2:
+                u,p=i.split(",")
+                p=p.replace("\n","")
+                id.append(u)
+                mark.append(p)
+                
+        if user_name not in id:
+        #  print("true")
          with open("marks.txt",'a') as a1:
            a1.write(f"{user_name},{marks}\n") 
         else:
@@ -127,7 +136,9 @@ def login():
      global login_status
      global user_name
      p=False
-    
+     with open("id-pass.txt",'r') as idpas:
+        d1=idpas.readlines()
+
      
        
      
@@ -142,6 +153,12 @@ def login():
             p=True
         
         else:
+            for i in d1:
+                u,p=i.split(",")
+                p=p.replace("\n","")
+                usid.append(u)
+                pa.append(p)
+                uid_pwd[u]=p
            
             
             k=False
@@ -214,7 +231,7 @@ def profile():
                 print("Marks=",j[1])
     else:
         print("\nFirst Login or Register\n")
-      
+    print(uid_pwd) 
        
 # Exit
 def exit():
