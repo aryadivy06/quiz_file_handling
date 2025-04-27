@@ -21,3 +21,27 @@ This file contain the code of the quiz application using file handling.
 <br>
 <b>registration.txt:-</b>
 This file contains the user credentials.
+
+# 📝 Quiz Application using File Handling
+
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+
+An interactive **Quiz Application** built with Python, demonstrating file handling techniques like reading and writing user data, quiz questions, and scores to text files.
+
+---
+
+## 📋 Features
+
+- User Registration and Login
+- Multiple quizzes on topics:
+  - DBMS
+  - DSA
+  - Python
+- Score Recording System
+- Secure Credential Storage (basic)
+- File-based backend (No database needed)
+
+---
+
+## 📂 Project Structure
+
