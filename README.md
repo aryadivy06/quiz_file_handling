@@ -45,3 +45,17 @@ This file contain the code of the quiz application using file handling.
 <b>registration.txt:-</b>
 This file contains the user credentials.
 
+
+---
+
+## 🚀 How to Run
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/aryadivy06/quiz_file_handling.git
+2. Navigate to the project folder:cd quiz_file_handling
+3. Run the application: python quiz2.py
+
+## Author 
+Divya Arya
+
